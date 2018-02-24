@@ -1,8 +1,5 @@
 import java.util.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
    
@@ -38,9 +35,13 @@ public class budgetMaker{
 		}
     }
 
-    public static void deposit(double budget){
-	double deposit = 0.0;
+    public static void deposit(File file){
+	double deposit, budget = 0.0;
 
+	In in = new In(file);
+	in.readString();
+	budget = in.readDouble();
+	
 	System.out.print("Enter deposit amount: $");
 	deposit = scnr.nextDouble();
 
@@ -49,9 +50,13 @@ public class budgetMaker{
 	writeToFile(budget);
     }
 
-    public static void withdrawl(double budget){
-	double withdrawl = 0.0;
+    public static void withdrawl(File file){
+	double withdrawl, budget = 0.0;
 
+	In in = new In(file);
+	in.readString();
+	budget = in.readDouble();
+	
 	System.out.print("Enter withdrawl amount: $");
 	withdrawl = scnr.nextDouble();
 
@@ -61,15 +66,16 @@ public class budgetMaker{
     }
     
     public static void main(String[] args){
-	if(new File("./budget.txt").isFile()) setup();
+	if(!new File("./budget.txt").isFile()) setup();
 	else;
 
+	File budgetFile = new File("./budget.txt");
+
 	String editType;
-	double budget = 1000.0;
 	System.out.print("Is this a deposit or a withdrawl? d/w: ");
 	editType = scnr.next();
-	if(editType.equals("d")) deposit(budget);
-	else if(editType.equals("w")) withdrawl(budget);
+	if(editType.equals("d")) deposit(budgetFile);
+	else if(editType.equals("w")) withdrawl(budgetFile);
 	else System.out.println("That is not a valid option. Goodbye");
     }
 }
