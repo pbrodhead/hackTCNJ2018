@@ -28,6 +28,14 @@ public class budgetMaker{
 			e.printStackTrace();
 		}
     }
+
+    public static void deposit(){
+	System.out.println("TODO: Make deposit method");
+    }
+
+    public static void withdrawl(){
+	System.out.println("TODO: Make withdrawl method");
+    }
     
     public static void main(String[] args){
 	String setup;
@@ -35,5 +43,12 @@ public class budgetMaker{
 	setup = scnr.next();
 	if(setup.equals("y")) setup();
 	else;
+
+	String editType;
+	System.out.println("Is this a deposit or a withdrawl: d/w");
+	editType = scnr.next();
+	if(editType.equals("d")) deposit();
+	else if(editType.equals("w")) withdrawl();
+	else System.out.println("That is not a valid option. Goodbye");
     }
 }
