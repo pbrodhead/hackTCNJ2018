@@ -18,6 +18,11 @@ public class budgetMaker{
 	//total free money determined
 	budget = income - fixedExpenses;
 	System.out.println("Your budget is $" + budget);
+
+	writeToFile(budget);
+    }
+
+    public static void writeToFile(double budget){
 	String budgetStr = Double.toString(budget); // numeric value converted to a string
     
 	//to .txt method
@@ -34,11 +39,25 @@ public class budgetMaker{
     }
 
     public static void deposit(double budget){
-	System.out.println("TODO: Make deposit method");
+	double deposit = 0.0;
+
+	System.out.print("Enter deposit amount: $");
+	deposit = scnr.nextDouble();
+
+	budget = budget + deposit;
+	System.out.println("Your new budget is: $" + budget);
+	writeToFile(budget);
     }
 
     public static void withdrawl(double budget){
-	System.out.println("TODO: Make withdrawl method");
+	double withdrawl = 0.0;
+
+	System.out.print("Enter withdrawl amount: $");
+	withdrawl = scnr.nextDouble();
+
+	budget = budget - withdrawl;
+	System.out.println("Your new budget is: $" + budget);
+	writeToFile(budget);
     }
     
     public static void main(String[] args){
@@ -47,7 +66,7 @@ public class budgetMaker{
 
 	String editType;
 	double budget = 1000.0;
-	System.out.println("Is this a deposit or a withdrawl: d/w");
+	System.out.print("Is this a deposit or a withdrawl? d/w: ");
 	editType = scnr.next();
 	if(editType.equals("d")) deposit(budget);
 	else if(editType.equals("w")) withdrawl(budget);
