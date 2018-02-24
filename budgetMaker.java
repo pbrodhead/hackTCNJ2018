@@ -15,12 +15,13 @@ public class budgetMaker{
 
 	budget = income - fixedExpenses;
 	System.out.println("Your budget is $" + budget);
+	String budgetStr = Double.toString(budget);
     
 	try {
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
 			fileWriter.write("Budget: ");
-			fileWriter.write(budget);
+			fileWriter.write(budgetStr);
 			fileWriter.flush();
 			fileWriter.close();
 		} catch (IOException e) {
