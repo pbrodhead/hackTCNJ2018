@@ -61,10 +61,7 @@ public class budgetMaker{
     }
     
     public static void main(String[] args){
-	String setup;
-	System.out.print("Is this your first time? y/n: ");
-	setup = scnr.next();
-	if(setup.equals("y")) setup();
+	if(!file.exists()) setup();
 	else;
 
 	String editType;
