@@ -42,7 +42,7 @@ public class budgetMaker{
     }
     
     public static void main(String[] args){
-	if(!file.exists()) setup();
+	if(new File("./budget.txt").isFile()) setup();
 	else;
 
 	String editType;
