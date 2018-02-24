@@ -77,28 +77,34 @@ public class budgetMaker{
 		
 	}
 
-    public static void deposit(double budget){
-	double deposit = 0.0;
-	double budgetafter = 0.0;
+    public static void deposit(File file){
+	double deposit, budget, budgetAfter = 0.0;
+
+	In in = new In(file);
+	String temp = in.readString();
+	budget = in.readDouble();
 
 	System.out.print("Enter deposit amount: $");
 	deposit = scnr.nextDouble();
 
-	budgetafter = budget + deposit;
+	budgetAfter = budget + deposit;
 	System.out.println("Your new budget is: $" + budget);
-	appendFile(budgetafter, budget, true);
+	appendFile(budgetAfter, budget, true);
     }
 
-    public static void withdrawl(double budget){
-	double withdrawl = 0.0;
-	double budgetafter = 0.0;
+    public static void withdrawl(File file){
+	double withdrawl, budget, budgetAfter = 0.0;
+
+	In in = new In(file);
+	String temp = in.readString();
+	budget = in.readDouble();
 
 	System.out.print("Enter withdrawl amount: $");
 	withdrawl = scnr.nextDouble();
 
-	budgetafter = budget - withdrawl;
+	budgetAfter = budget - withdrawl;
 	System.out.println("Your new budget is: $" + budget);
-	appendFile(budgetafter, budget, false);
+	appendFile(budgetAfter, budget, false);
     }
     
     public static void main(String[] args)
@@ -113,18 +119,18 @@ public class budgetMaker{
 		else
 		{
 			String editType;
-			double budget = 1000.0;
+			File budgetFile = new File("./budget.txt");
 			System.out.print("Is this a deposit or a withdrawl? d/w: ");
 			editType = scnr.next();
 		
 			if(editType.equals("d")) 
 			{
-				deposit(budget);
+				deposit(budgetFile);
 			}
 		
 			else if(editType.equals("w")) 
 			{
-				withdrawl(budget);
+				withdrawl(budgetFile);
 			}
 			else if(editType.equals("e")) 
 			{
