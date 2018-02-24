@@ -47,26 +47,28 @@ public class budgetMaker{
 	try {
 			if (add == true)
 			{
-				File f = new File("budget.txt");
-				FileWriter fw = new FileWriter(f);
+				File f = new File("budget.txt");//TODO make it change vs delete
+				FileWriter fw = new FileWriter(f, true);
 				fw.write("+");
 				double money = ba-b;
 				fw.write(Double.valueOf(money).toString());
-				fw.write("Budget:		 ");
+				fw.write("Budget:");
 				fw.write(Double.valueOf(b).toString());
+				fw.write("\n");
 				fw.flush();
 				fw.close();
 			}
 			else
 			{
-				File f = new File("budget.txt");
-				FileWriter fw = new FileWriter(f);
+				File f = new File("budget.txt"); //TODO make it change vs delete
+				FileWriter fw = new FileWriter(f,true);
 				fw.write("-");
 				double money = b-ba;
 				fw.write("$");
-				fw.write(Double.valueOf(money).toString() + "/n");
-				fw.write("Budget:		 ");
+				fw.write(Double.valueOf(money).toString());
+				fw.write("Budget: ");
 				fw.write(Double.valueOf(b).toString());
+				fw.write("\n");
 				fw.flush();
 				fw.close();
 			}
