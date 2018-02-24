@@ -53,7 +53,7 @@ public class budgetMaker{
 				double money = ba-b;
 				fw.write(Double.valueOf(money).toString());
 				fw.write("Budget:");
-				fw.write(Double.valueOf(b).toString());
+				fw.write(Double.valueOf(ba).toString());
 				fw.write("\n");
 				fw.flush();
 				fw.close();
@@ -67,7 +67,7 @@ public class budgetMaker{
 				fw.write("$");
 				fw.write(Double.valueOf(money).toString());
 				fw.write("Budget: ");
-				fw.write(Double.valueOf(b).toString());
+				fw.write(Double.valueOf(ba).toString());
 				fw.write("\n");
 				fw.flush();
 				fw.close();
@@ -90,7 +90,7 @@ public class budgetMaker{
 	deposit = scnr.nextDouble();
 
 	budgetAfter = budget + deposit;
-	System.out.println("Your new budget is: $" + budget);
+	System.out.println("Your new budget is: $" + budgetAfter);
 	appendFile(budgetAfter, budget, true);
     }
 
@@ -105,7 +105,7 @@ public class budgetMaker{
 	withdrawl = scnr.nextDouble();
 
 	budgetAfter = budget - withdrawl;
-	System.out.println("Your new budget is: $" + budget);
+	System.out.println("Your new budget is: $" + budgetAfter);
 	appendFile(budgetAfter, budget, false);
     }
     
