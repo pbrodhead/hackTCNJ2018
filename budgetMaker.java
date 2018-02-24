@@ -4,8 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class budgetMaker{
-    public static void main(String[] args){
-	Scanner scnr = new Scanner(System.in);
+    public static Scanner scnr = new Scanner(System.in);
+    public static void setup(){
 	double income, fixedExpenses, budget = 0.0;
 
 	System.out.print("Enter your income: $");
@@ -27,5 +27,13 @@ public class budgetMaker{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+    }
+    
+    public static void main(String[] args){
+	String setup;
+	System.out.print("Is this your first time? y/n: ");
+	setup = scnr.next();
+	if(setup.equals("y")) setup();
+	else;
+    }
 }
