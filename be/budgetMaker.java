@@ -125,7 +125,7 @@ public static void createFile(double budget){
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
 			//fileWriter.write("+" + budgetStr);
-			fileWriter.write("Budget: $");
+			fileWriter.write("Budget:");
 			fileWriter.write(budgetStr);
 			fileWriter.write(System.getProperty( "line.separator" ));
 			fileWriter.flush();
