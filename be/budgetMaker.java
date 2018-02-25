@@ -180,6 +180,16 @@ public static void createFile(double budget){
 		
 	}
 
+    public static double getBalance(File file){
+	double budget = 0.0;
+
+	be.in.In in = new be.in.In(file);
+	String[] temp = in.readAllStrings();
+	String[] split = temp[temp.length-1].split(":");
+	budget = Double.parseDouble(split[1]);
+	return budget;
+    }
+
 public static void deposit(File file){
 	double deposit, budget = 0.0;
 
@@ -251,7 +261,7 @@ public static void main(String[] args)
 		{
 			String editType;
 			File budgetFile = new File("./budget.txt");
-			System.out.print("Is this a deposit, withdrawal, or exit? d/w/e: ");
+			System.out.print("Is this a deposit, withdrawal, balance check, or exit? d/w/b/e: ");
 			editType = scnr.next();
 		
 			if(editType.equals("d")) 
@@ -267,6 +277,10 @@ public static void main(String[] args)
 			{
 				loop = false;
 			}
+			else if(editType.equals("b"))
+			{
+			    System.out.println("Balance is: $" + getBalance(budgetFile));
+		        }
 	
 			else{
 				System.out.println("That is not a valid option.");
