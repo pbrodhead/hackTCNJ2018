@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
-    public static boolean error = false;
+    public static boolean error = false; //global error value for catch statments
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
 public static void setup(){ // this method runs the first time the program is launched
@@ -14,9 +14,9 @@ public static void setup(){ // this method runs the first time the program is la
 	// user inputs information
 	do{
 	    System.out.print("Enter your income: $");
-	    if(!scnr.hasNextDouble()){
+	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
 		System.out.println("Please enter a number");
-		String temp = scnr.next();
+		String temp = scnr.next(); //dumps garbage data to avoid infinite loops
 		error = true;
 	    }
 	    else error = false;
@@ -25,9 +25,9 @@ public static void setup(){ // this method runs the first time the program is la
 
 	do{
 	    System.out.print("Enter your fixed expenses: $");
-	    if(!scnr.hasNextDouble()){
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
 		System.out.println("Please enter a number");
-		String temp = scnr.next();
+		String temp = scnr.next(); //see above do/while loop
 		error = true;
 	    }
 	    else error = false;
@@ -37,8 +37,8 @@ public static void setup(){ // this method runs the first time the program is la
 	//total free money determined
 	budget = income - fixedExpenses;
 	System.out.println("Your budget is $" + budget);
-	if(budget < 0.0){
-	    System.out.println("You have more expenses than income. Please get a higher paying job");
+	if(budget < 0.0){ //checks if user in poor financial state
+	    System.out.println("You have more expenses than income. Please get a higher paying job"); //informs user that they are in poor financial state
 	    setup();
 	}
 
@@ -115,9 +115,9 @@ public static void deposit(File file){
 
 	do{
 	    System.out.print("Enter deposit amount: $");
-	    if(!scnr.hasNextDouble()){
+	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
 		System.out.println("Please enter a number");
-		String temp12 = scnr.next();
+		String temp12 = scnr.next(); //dumps garbage data to avoid infinite loop
 		error = true;
 	    }
 	    else error = false;
@@ -139,16 +139,16 @@ public static void withdrawl(File file){
 
 	do{
 	    System.out.print("Enter withdrawal amount: $");
-	    if(!scnr.hasNextDouble()){
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
 		System.out.println("Please enter a number");
-		String temp123 = scnr.next();
+		String temp123 = scnr.next(); //see above do/while loop
 		error = true;
 	    }
 	    else error = false;
 	}while(error);
 	withdrawl = scnr.nextDouble();
 	
-	if(withdrawl < budget) //TODO check that input is valid
+	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
 		budget = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budget);
@@ -157,9 +157,8 @@ public static void withdrawl(File file){
 	else
 	{
 		System.out.println("Insufficient Funds");
+		withdrawl(file);
 	}
-
-	budget = budget - withdrawl;
 }
 
 public static void main(String[] args)
