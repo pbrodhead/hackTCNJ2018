@@ -20,6 +20,7 @@ public class main(){
 			double leftover = income - fixedCost;
 			bM.creatFile(leftover);
 			//use bM.createFile(total budget) to create the .txt file
+			//TODO go to homepage
 		}
 		else
 		{ 
