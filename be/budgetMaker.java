@@ -34,7 +34,7 @@ public class budgetMaker{
 			//fileWriter.write("+" + budgetStr);
 			fileWriter.write("Budget: ");
 			fileWriter.write(budgetStr);
-			fw.write(System.getProperty( "line.separator" ));
+			fileWriter.write(System.getProperty( "line.separator" ));
 			fileWriter.flush();
 			fileWriter.close();
 		} catch (IOException e) {
