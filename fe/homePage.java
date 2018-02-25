@@ -167,11 +167,11 @@ public class homePage extends JFrame implements ActionListener
 		{
 			//should go to newProf
 			newProf nP = new newProf();
-			
+			nP.showPage();
 		}
 	}
 	
-	public static void main(String[] args)
+	public static void showPage()
 	{
 		new homePage();
 	}

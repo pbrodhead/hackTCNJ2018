@@ -1,6 +1,8 @@
 # hackTCNJ2018
 code for hackTCNJ 2018 project
 
+NOTE: The UI was not completed before the submission deadline. The entire program works when compiling budgetMaker.java and /in/In.java in the /be directory
+
 budgeting software project
 
 Step 1: COMPLETED make basic budget finding program

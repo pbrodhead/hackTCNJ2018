@@ -3,6 +3,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import java.util.*;
+import java.io.*;
 
 public class welcomeScreen extends JFrame implements ActionListener
 {
@@ -19,11 +21,19 @@ public class welcomeScreen extends JFrame implements ActionListener
 	// When the button is pressed open the next frame
 	public void actionPerformed(ActionEvent e)
 	{
+	    newProf np = new newProf();
+	    homePage hp = new homePage();
 		if(e.getActionCommand().equals("myButton"))
 		{
 			System.out.print("kms");
 			setVisible(false); //you can't see me!
 			dispose(); //Destroy the JFrame object
+			if(!new File("../budget.txt").isFile()){
+			    np.showPage();
+			}
+			else{
+			    hp.showPage();
+			}
 		}	
 		
 		return;
