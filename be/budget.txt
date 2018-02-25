@@ -1,1 +1,3 @@
-Budget: $98.0
+Budget:98.0
++98.0
+Budget:100.0

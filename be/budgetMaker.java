@@ -76,7 +76,7 @@ public static void createFile(double budget){
        			double money = ba-b;
 				fw.write(Double.valueOf(money).toString());
 				fw.write(System.getProperty( "line.separator" ));
-				fw.write("Budget: $");
+				fw.write("Budget:");
 				fw.write(Double.valueOf(ba).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
@@ -91,7 +91,7 @@ public static void createFile(double budget){
 				fw.write("$");
 				fw.write(Double.valueOf(money).toString());
 				fw.write(System.getProperty( "line.separator" ));
-				fw.write("Budget: $");
+				fw.write("Budget:");
 				fw.write(Double.valueOf(ba).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
@@ -110,8 +110,13 @@ public static void deposit(File file){
 	In in = new In(file);
 	
 	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split("$");
-	budget = Double.parseDouble(split[0]);
+	for(int i=0;i<=temp.length-1;i++)
+	{
+		System.out.println("foo");
+		System.out.println(temp[i]);
+	}
+	String[] split = temp[temp.length-1].split(":");
+	budget = Double.parseDouble(split[1]);
 
 	do{
 	    System.out.print("Enter deposit amount: $");
@@ -134,8 +139,8 @@ public static void withdrawl(File file){
 
 	In in = new In(file);
 	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split("$");
-	budget = Double.parseDouble(split[0]);
+	String[] split = temp[temp.length-1].split(":");
+	budget = Double.parseDouble(split[1]);
 
 	do{
 	    System.out.print("Enter withdrawal amount: $");
