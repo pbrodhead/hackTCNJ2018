@@ -124,7 +124,6 @@ public static void createFile(double budget){
 	try {
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
-			//fileWriter.write("+" + budgetStr);
 			fileWriter.write("Budget:");
 			fileWriter.write(budgetStr);
 			fileWriter.write(System.getProperty( "line.separator" ));
@@ -182,11 +181,6 @@ public static void deposit(File file){
 	In in = new In(file);
 	
 	String[] temp = in.readAllStrings();
-	for(int i=0;i<=temp.length-1;i++)
-	{
-		System.out.println("foo");
-		System.out.println(temp[i]);
-	}
 	String[] split = temp[temp.length-1].split(":");
 	budget = Double.parseDouble(split[1]);
 
@@ -201,9 +195,9 @@ public static void deposit(File file){
 	}while(error);
 	deposit = scnr.nextDouble();
 	
-	budget = budget + deposit;
-	System.out.println("Your new budget is: $" + budget);
-	appendFile(budget, deposit, true);
+	double budgetA = budget + deposit;
+	System.out.println("Your new budget is: $" + budgetA);
+	appendFile(budgetA, budget, true);
     }
 
 public static void withdrawl(File file){
@@ -227,9 +221,9 @@ public static void withdrawl(File file){
 	
 	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
-		budget = budget - withdrawl;
+		double budgetA = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budget);
-		appendFile(budget, withdrawl, true);
+		appendFile(budgetA, budget, true);
 	}
 	else
 	{
