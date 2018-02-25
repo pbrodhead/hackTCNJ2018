@@ -19,6 +19,8 @@ public class homePage extends JFrame implements ActionListener
 	private JButton funBtn;
 	private JButton luxuryBtn;
 	private JButton depositBtn;
+	private JButton submitBtn;
+	private JButton editBtn;
 	
 	private JTextField Food;
 	private JTextField Gas;
@@ -76,9 +78,13 @@ public class homePage extends JFrame implements ActionListener
 		
 		budgetLbl = new JLabel("Funds Remaining: $" + totalBudget);
 		
-		JButton editBtn = new JButton("Edit Profile");
+		editBtn = new JButton("Edit Profile");
 		editBtn.setActionCommand("editBtn");
 		editBtn.addActionListener(this);
+		
+		submitBtn = new JButton("Submit");
+		submitBtn.setActionCommand("submitBtn");
+		submitBtn.addActionListener(this);
 		
 		
 		add(foodLbl);
@@ -101,6 +107,11 @@ public class homePage extends JFrame implements ActionListener
 		add(Deposit);
 		add(depositBtn);
 		
+		add(budgetLbl);
+		
+		add(submitBtn);
+		
+		add(editBtn);
 		
 		pack();
 		setLocationRelativeTo(null);
@@ -119,7 +130,6 @@ public class homePage extends JFrame implements ActionListener
 			totalBudget = totalBudget - foodNum;
 			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			foodLbl.setText("Food: $" + Food.getText());
-
 		}
 		if (e.getActionCommand().equals("gasBtn"))
 		{
@@ -148,12 +158,21 @@ public class homePage extends JFrame implements ActionListener
 			totalBudget = totalBudget + depositNum;
 			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 		}
+		if (e.getActionCommand().equals("submitBtn"))
+		{
+			
+			
+		}
+		if (e.getActionCommand().equals("editBtn"))
+		{
+			
+			
+		}
 	}
 	
 	public static void main(String[] args)
 	{
 		new homePage();
 	}
-	
 }
 	  
