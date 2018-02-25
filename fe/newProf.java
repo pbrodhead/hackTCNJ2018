@@ -1,4 +1,4 @@
-package fe;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -93,18 +93,6 @@ public class newProf extends JFrame implements ActionListener
 		insuranceBtn.addActionListener(this);
 		Insurance = new JTextField("", 5);
 		
-		foodLbl = new JLabel("Food: $" + foodNum);
-		foodBtn = new JButton("Set");
-		foodBtn.setActionCommand("foodBtn");
-		foodBtn.addActionListener(this);
-		Food = new JTextField("", 5);
-		
-		funLbl = new JLabel("Entertainment: $" + funNum);
-		funBtn = new JButton("Set");
-		funBtn.setActionCommand("funBtn");
-		funBtn.addActionListener(this);
-		Fun = new JTextField("", 5);
-		
 		extraLbl = new JLabel("Savings: " + extraNum + "%");
 		extraBtn = new JButton("Set");
 		extraBtn.setActionCommand("extraBtn");
@@ -152,50 +140,48 @@ public class newProf extends JFrame implements ActionListener
 	
 	public void actionPerformed(ActionEvent e)
 	{
-	    budgetMaker budget = new budgetMaker();
+
 		if (e.getActionCommand().equals("salaryBtn"))
 		{
 			salaryLbl.setText("Salary: $" + Salary.getText());
 			salaryNum = Double.parseDouble(Salary.getText());
-			budget.salary = salaryNum;
+
 		}
 		if (e.getActionCommand().equals("auxIncBtn"))
 		{
 			auxIncLbl.setText("Auxillary Income: $" + auxInc.getText());
 			auxIncNum = Double.parseDouble(auxInc.getText());
-			budget.auxIncome = auxIncNum;
+
 		}
 		if (e.getActionCommand().equals("carBtn"))
 		{
 			carLbl.setText("Car: $" + Car.getText());
 			carNum = Double.parseDouble(Car.getText());
-			budget.car = carNum;
+	
 		}
 		if (e.getActionCommand().equals("homeBtn"))
 		{
 			homeLbl.setText("Home: $" + Home.getText());
 			homeNum = Double.parseDouble(Home.getText());
-			budget.house = homeNum;
+		
 		}
 		if (e.getActionCommand().equals("taxBtn"))
 		{
 			taxLbl.setText("Tax: $" + Tax.getText());
 			taxNum = Double.parseDouble(Tax.getText());
-			budget.taxes = taxNum;
+		
 		}
 		if (e.getActionCommand().equals("insuranceBtn"))
 		{
 			insuranceLbl.setText("Insurance: $" + Insurance.getText());
 			insuranceNum = Double.parseDouble(Insurance.getText());
-			budget.insurance = insuranceNum;
+		
 		}
 		if (e.getActionCommand().equals("extraBtn"))
 		{
 			extraLbl.setText("Savings: " + Extra.getText() + "%");
 			extraNum = Double.parseDouble(Extra.getText());
 			extraNum = extraNum / 100;
-			extraNum = extraNum * budget.income;
-			budget.savings = extraNum;
 		}
 	}
 	
