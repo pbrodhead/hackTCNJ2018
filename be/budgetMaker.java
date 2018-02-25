@@ -6,11 +6,12 @@ import java.io.IOException;
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
     public static boolean error = false; //global error value for catch statments
+    public static double salary, auxIncome, income, house, car, insurance, taxes, savings, fixedExpenses = 0.0;
+
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
-   
+    
 public static void setup(){ // this method runs the first time the program is launched
-    double salary, auxIncome, income, rent, mortgage, car, insurance, taxes, savings, fixedExpenses, budget = 0.0;
-	
+    double budget = 0.0;
 	// user inputs information
 	do{
 	    System.out.print("Enter your annual salary: $");
@@ -34,10 +35,10 @@ public static void setup(){ // this method runs the first time the program is la
 	} while(error);
 	auxIncome = scnr.nextDouble();
 
-	income = (salary / 12) + auxIncome;
+
 
 	do{
-	    System.out.print("Enter your monthly rent: $");
+	    System.out.print("Enter your monthly housing costs: $");
 	    if(!scnr.hasNextDouble()){ //see above do/while loop
 		System.out.println("Please enter a number");
 		String temp = scnr.next(); //see above do/while loop
@@ -45,18 +46,7 @@ public static void setup(){ // this method runs the first time the program is la
 	    }
 	    else error = false;
 	}while(error);
-	rent = scnr.nextDouble();
-
-	do{
-	    System.out.print("Enter your monthly mortgage payment: $");
-	    if(!scnr.hasNextDouble()){ //see above do/while loop
-		System.out.println("Please enter a number");
-		String temp = scnr.next(); //see above do/while loop
-		error = true;
-	    }
-	    else error = false;
-	}while(error);
-	mortgage = scnr.nextDouble();
+	house = scnr.nextDouble();
 
 	do{
 	    System.out.print("Enter your monthly car payment: $");
@@ -104,7 +94,8 @@ public static void setup(){ // this method runs the first time the program is la
 	savings = savings / 100;
 	savings = savings * income;
 
-	fixedExpenses = rent + mortgage + car + insurance + taxes + savings;
+	income = (salary / 12) + auxIncome;	
+	fixedExpenses = house + car + insurance + taxes + savings;
 
 	//total free money determined
 	budget = income - fixedExpenses;
@@ -115,6 +106,16 @@ public static void setup(){ // this method runs the first time the program is la
 	}
 
 	createFile(budget); 
+    }
+
+    public static void setFile(){
+	double budget = 0.0;
+	
+	income = (salary / 12) + auxIncome;	
+	fixedExpenses = house + car + insurance + taxes + savings;
+	budget = income - fixedExpenses;
+
+	creatFile(budget);
     }
 
 public static void createFile(double budget){
