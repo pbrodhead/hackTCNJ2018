@@ -105,7 +105,7 @@ public class budgetMaker{
 	budget = Double.parseDouble(split[1]);
 
 	System.out.print("Enter deposit amount: $");
-	deposit = scnr.nextDouble();
+	deposit = scnr.nextDouble(); // TODO check that input is valid
 
 	budget = budget + deposit;
 	System.out.println("Your new budget is: $" + budget);
@@ -123,12 +123,17 @@ public class budgetMaker{
 	System.out.print("Enter deposit amount: $");
 	withdrawl = scnr.nextDouble();
 	
-	//while(withdrawl < budget)
-	//{
+	if(withdrawl < budget) //TODO check that input is valid
+	{
 		budget = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budget);
 		appendFile(budget, withdrawl, true);
-   // }
+	}
+	
+	else
+	{
+		System.out.println("Insufficient Funds");
+	}
     }
     
     public static void main(String[] args)
@@ -162,7 +167,7 @@ public class budgetMaker{
 			}
 	
 			else{
-				System.out.println("That is not a valid option. Goodbye");
+				System.out.println("That is not a valid option.");
 			}
 	
 		}
