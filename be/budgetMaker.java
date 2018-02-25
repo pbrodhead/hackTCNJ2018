@@ -34,7 +34,7 @@ public class budgetMaker{
 			//fileWriter.write("+" + budgetStr);
 			fileWriter.write("Budget: ");
 			fileWriter.write(budgetStr);
-			fileWriter.write("\n");
+			fw.write(System.getProperty( "line.separator" ));
 			fileWriter.flush();
 			fileWriter.close();
 		} catch (IOException e) {
@@ -90,8 +90,9 @@ public class budgetMaker{
 	    String temp1 = in.readString();
 	    double temp2 = in.readDouble();
 	    } */
-	String temp = in.readString();
-	budget = in.readDouble();
+	String[] temp = in.readAllStrings();
+	String[] split = temp[temp.length-1].split(":");
+	budget = Double.parseDouble(split[1]);
 
 	System.out.print("Enter deposit amount: $");
 	deposit = scnr.nextDouble();
@@ -105,8 +106,9 @@ public class budgetMaker{
 	double withdrawl, budget = 0.0;
 
 	In in = new In(file);
-	String temp = in.readString();
-	budget = in.readDouble();
+	String[] temp = in.readAllStrings();
+	String[] split = temp[temp.length-1].split(":");
+	budget = Double.parseDouble(split[1]);
 
 	System.out.print("Enter deposit amount: $");
 	withdrawl = scnr.nextDouble();
