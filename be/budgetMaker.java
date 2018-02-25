@@ -6,11 +6,12 @@ import java.io.IOException;
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
     public static boolean error = false; //global error value for catch statments
+    public static double salary, auxIncome, income, house, car, insurance, taxes, savings, fixedExpenses = 0.0;
+
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
-   
+    
 public static void setup(){ // this method runs the first time the program is launched
-    double salary, auxIncome, income, rent, mortgage, car, insurance, taxes, savings, fixedExpenses, budget = 0.0;
-	
+    double budget = 0.0;
 	// user inputs information
 	do{
 	    System.out.print("Enter your annual salary: $");
@@ -34,10 +35,10 @@ public static void setup(){ // this method runs the first time the program is la
 	} while(error);
 	auxIncome = scnr.nextDouble();
 
-	income = (salary / 12) + auxIncome;
+
 
 	do{
-	    System.out.print("Enter your monthly rent: $");
+	    System.out.print("Enter your monthly housing costs: $");
 	    if(!scnr.hasNextDouble()){ //see above do/while loop
 		System.out.println("Please enter a number");
 		String temp = scnr.next(); //see above do/while loop
@@ -45,18 +46,7 @@ public static void setup(){ // this method runs the first time the program is la
 	    }
 	    else error = false;
 	}while(error);
-	rent = scnr.nextDouble();
-
-	do{
-	    System.out.print("Enter your monthly mortgage payment: $");
-	    if(!scnr.hasNextDouble()){ //see above do/while loop
-		System.out.println("Please enter a number");
-		String temp = scnr.next(); //see above do/while loop
-		error = true;
-	    }
-	    else error = false;
-	}while(error);
-	mortgage = scnr.nextDouble();
+	house = scnr.nextDouble();
 
 	do{
 	    System.out.print("Enter your monthly car payment: $");
@@ -104,7 +94,8 @@ public static void setup(){ // this method runs the first time the program is la
 	savings = savings / 100;
 	savings = savings * income;
 
-	fixedExpenses = rent + mortgage + car + insurance + taxes + savings;
+	income = (salary / 12) + auxIncome;	
+	fixedExpenses = house + car + insurance + taxes + savings;
 
 	//total free money determined
 	budget = income - fixedExpenses;
@@ -115,6 +106,16 @@ public static void setup(){ // this method runs the first time the program is la
 	}
 
 	createFile(budget); 
+    }
+
+    public static void setFile(){
+	double budget = 0.0;
+	
+	income = (salary / 12) + auxIncome;	
+	fixedExpenses = house + car + insurance + taxes + savings;
+	budget = income - fixedExpenses;
+
+	creatFile(budget);
     }
 
 public static void createFile(double budget){
@@ -159,7 +160,6 @@ public static void createFile(double budget){
 				FileWriter fw = new FileWriter(f,true);
 				fw.write("-");
 				double money = b-ba;
-				fw.write("$");
 				fw.write(Double.valueOf(money).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.write("Budget:");
@@ -175,15 +175,18 @@ public static void createFile(double budget){
 		
 	}
 
-public static void deposit(File file){
-	double deposit, budget = 0.0;
-
+    public static double readBudget(File file){
 	In in = new In(file);
-	
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split(":");
-	budget = Double.parseDouble(split[1]);
+	return Double.parseDouble(split[1]);
+    }
 
+    public static void deposit(File file){
+	double deposit, budget = 0.0;
+	
+	budget = readBudget(file);
+	
 	do{
 	    System.out.print("Enter deposit amount: $");
 	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
@@ -203,11 +206,8 @@ public static void deposit(File file){
 public static void withdrawl(File file){
 	double withdrawl, budget = 0.0;
 
-	In in = new In(file);
-	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split(":");
-	budget = Double.parseDouble(split[1]);
-
+	budget = readBudget(file);
+	
 	do{
 	    System.out.print("Enter withdrawal amount: $");
 	    if(!scnr.hasNextDouble()){ //see above do/while loop
@@ -222,7 +222,7 @@ public static void withdrawl(File file){
 	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
 		double budgetA = budget - withdrawl;
-		System.out.println("Your new budget is: $" + budget);
+		System.out.println("Your new budget is: $" + budgetA);
 		appendFile(budgetA, budget, true);
 	}
 	else
@@ -232,12 +232,16 @@ public static void withdrawl(File file){
 	}
 }
 
-public static void main(String[] args)
-{
+    public static boolean isFile(String fileName){
+	return new File(fileName).isFile();
+    }
+
+    public static void main(String[] args)
+    {
 	boolean loop = true;
 	while(loop)
 	{
-		if(!(new File("./budget.txt").isFile())) 
+	    if(!isFile("./budget.txt")) 
 		{	
 			setup();
 		}
