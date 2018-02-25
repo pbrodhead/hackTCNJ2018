@@ -1,4 +1,3 @@
-	
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -147,7 +146,6 @@ public class homePage extends JFrame implements ActionListener
 			depositNum = Double.parseDouble(Deposit.getText());
 			totalBudget = totalBudget + depositNum;
 			budgetLbl.setText("Funds Remaining: $" + totalBudget);
-			
 		}
 	}
 	
