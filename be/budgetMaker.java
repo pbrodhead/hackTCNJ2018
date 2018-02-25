@@ -8,7 +8,7 @@ public class budgetMaker{
     public static boolean error = false;
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
-   public static void setup(){ // this method runs the first time the program is launched
+public static void setup(){ // this method runs the first time the program is launched
 	double income, fixedExpenses, budget = 0.0;
 	
 	// user inputs information
@@ -45,7 +45,7 @@ public class budgetMaker{
 	createFile(budget); 
     }
 
-    public static void createFile(double budget){
+public static void createFile(double budget){
 	String budgetStr = Double.toString(budget); // numeric value converted to a string
     
 	//to .txt method
@@ -122,7 +122,8 @@ public static void deposit(File file){
 	    }
 	    else error = false;
 	}while(error);
-
+	deposit = scnr.nextDouble();
+	
 	budget = budget + deposit;
 	System.out.println("Your new budget is: $" + budget);
 	appendFile(budget, deposit, true);
@@ -159,6 +160,7 @@ public static void withdrawl(File file){
 	}
 
 	budget = budget - withdrawl;
+}
 
 public static void main(String[] args)
 {
@@ -200,3 +202,4 @@ public static void main(String[] args)
 	}
 	}
 }
+
