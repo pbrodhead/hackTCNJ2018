@@ -31,8 +31,10 @@ public class budgetMaker{
 	try {
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
+			//fileWriter.write("+" + budgetStr);
 			fileWriter.write("Budget: ");
 			fileWriter.write(budgetStr);
+			fileWriter.write("\n");
 			fileWriter.flush();
 			fileWriter.close();
 		} catch (IOException e) {
@@ -49,9 +51,9 @@ public class budgetMaker{
 			{
 				File f = new File("budget.txt");//TODO make it change vs delete
 				FileWriter fw = new FileWriter(f, true);
-				fw.write("+");
-				double money = ba-b;
-				fw.write(Double.valueOf(money).toString());
+				//fw.write("+");
+       				//double money = ba-b;
+				//fw.write(Double.valueOf(money).toString());
 				fw.write("Budget:");
 				fw.write(Double.valueOf(ba).toString());
 				fw.write(System.getProperty( "line.separator" ));
@@ -80,33 +82,38 @@ public class budgetMaker{
 	}
 
     public static void deposit(File file){
-	double deposit, budget, budgetAfter = 0.0;
+	double deposit, budget = 0.0;
 
 	In in = new In(file);
+	/*
+	while(in.hasNextLine()){
+	    String temp1 = in.readString();
+	    double temp2 = in.readDouble();
+	    } */
 	String temp = in.readString();
 	budget = in.readDouble();
 
 	System.out.print("Enter deposit amount: $");
 	deposit = scnr.nextDouble();
 
-	budgetAfter = budget + deposit;
-	System.out.println("Your new budget is: $" + budgetAfter);
-	appendFile(budgetAfter, budget, true);
+	budget = budget + deposit;
+	System.out.println("Your new budget is: $" + budget);
+	appendFile(budget, deposit, true);
     }
 
     public static void withdrawl(File file){
-	double withdrawl, budget, budgetAfter = 0.0;
+	double withdrawl, budget = 0.0;
 
 	In in = new In(file);
 	String temp = in.readString();
 	budget = in.readDouble();
 
-	System.out.print("Enter withdrawl amount: $");
+	System.out.print("Enter deposit amount: $");
 	withdrawl = scnr.nextDouble();
 
-	budgetAfter = budget - withdrawl;
-	System.out.println("Your new budget is: $" + budgetAfter);
-	appendFile(budgetAfter, budget, false);
+	budget = budget - withdrawl;
+	System.out.println("Your new budget is: $" + budget);
+	appendFile(budget, withdrawl, true);
     }
     
     public static void main(String[] args)
