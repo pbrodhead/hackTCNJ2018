@@ -11,8 +11,15 @@ public class main(){
 		if(!(new File("./budget.txt").isFile())) 
 		{	
 			wS.actionPerformed(e); //launch the profile info input
-			//TODO make a function that pulls all the data from the UI
-			//TODO use bM.createFile(total budget) to create the .txt file
+			double[] data = nP.pull();
+			double fixedCost= 0.0;
+			
+			double income = data[0] + data[1];
+			double fixedCost = data[2] + data[3] + data[4] + data[5]+ data[6];
+			 
+			double leftover = income - fixedCost;
+			bM.creatFile(leftover);
+			//use bM.createFile(total budget) to create the .txt file
 		}
 		else
 		{ 

@@ -191,15 +191,27 @@ public class newProf extends JFrame implements ActionListener
 			extraNum = extraNum / 100;
 			extraNum = extraNum * (salaryNum + auxIncNum);
 		}
-<<<<<<< HEAD
 		
-=======
 		if (e.getActionCommand().equals("submitBtn"))
 		{
 			
 			
 		}
->>>>>>> 590a05db9377dfba6615926d11bbaa5e3fc6b9c6
+
+	}
+	
+	public double[] pull() // pulls in all the data
+	{
+		double[] interm = new double[];
+		interm[0] = salaryNum;
+		interm[1] =	auxIncNum;
+		interm[2] = carNum;
+		interm[3] = homeNum;
+		interm[4] = taxNum;
+		interm[5] = insuranceNum;
+		interm[6] = extraNum;
+		
+		return interm[];
 	}
 	
 	
