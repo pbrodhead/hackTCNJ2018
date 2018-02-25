@@ -1,55 +1,49 @@
 import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.event.*;
- 
-public class welcomeScreen extends Frame
-      implements ActionListener, WindowListener 
-	  {
-   private Button btnStart;    
- 
-   public welcomeScreen() 
-   {
-      setLayout(new FlowLayout()); 
- 
-      add(new Label("Welcome to BudgetMaster Extreme! Click here to begin."));
- 
-      btnStart = new Button("Begin");  
-      add(btnStart);                   
- 
-      btnStart.addActionListener(this);
+import .*;
 
-      addWindowListener(this);
-	  
-      setTitle("Welcome");
-      setSize(800, 1200);          
-      setVisible(true);             
-   }
- 
-   // The entry main() method
-   public static void main(String[] args) 
-   {
-      new welcomeScreen();  // Let the construct do the job
-   }
- 
-   /* ActionEvent handler */
-   @Override
-   public void actionPerformed(ActionEvent evt) 
-   {
-      new welcomeScreen();
-   }
- 
-   /* WindowEvent handlers */
-   // Called back upon clicking close-window button
-   @Override
-   public void windowClosing(WindowEvent evt) 
-   {
-      System.exit(0);  // Terminate the program
-   }
- 
-   // Not Used, but need to provide an empty body to compile.
-   @Override public void windowOpened(WindowEvent evt) { }
-   @Override public void windowClosed(WindowEvent evt) { }
-   @Override public void windowIconified(WindowEvent evt) { }
-   @Override public void windowDeiconified(WindowEvent evt) { }
-   @Override public void windowActivated(WindowEvent evt) { }
-   @Override public void windowDeactivated(WindowEvent evt) { }
+public class welcomeScreen extends JFrame implements ActionListener
+{
+	private JLabel welMsg;
+	private JButton welBtn;
+	
+
+    public welcomeScreen() 
+	{
+        super("Welcome Screen");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(400, 200));
+	    ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13) );
+        setLayout(new FlowLayout());
+	   
+	    JButton welcome = new JButton("Click here to get started!");
+		welcome.setActionCommand("myButton");
+		welcome.addActionListener(this);
+		
+		welMsg = new JLabel("Welcome to BudgetMakerXtreme!");
+		
+		add(welMsg);
+		add(welcome);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
+		setResizable(false);
+    }
+
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getActionCommand().equals("myButton"))
+		{
+			new newProf();
+		}
+		
+	}
+	
+	
+    public static void main(String[] args) 
+	{
+		new welcomeScreen();
+    }
 }
