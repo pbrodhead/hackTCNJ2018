@@ -40,7 +40,7 @@ public class budgetMaker{
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
 			//fileWriter.write("+" + budgetStr);
-			fileWriter.write("Budget: ");
+			fileWriter.write("Budget: $");
 			fileWriter.write(budgetStr);
 			fileWriter.write(System.getProperty( "line.separator" ));
 			fileWriter.flush();
@@ -57,12 +57,13 @@ public class budgetMaker{
 	try {
 			if (add == true)
 			{
-				File f = new File("budget.txt");//TODO make it change vs delete
+				File f = new File("budget.txt");
 				FileWriter fw = new FileWriter(f, true);
-				//fw.write("+");
-       				//double money = ba-b;
-				//fw.write(Double.valueOf(money).toString());
-				fw.write("Budget:");
+				fw.write("+");
+       			double money = ba-b;
+				fw.write(Double.valueOf(money).toString());
+				fw.write(System.getProperty( "line.separator" ));
+				fw.write("Budget: $");
 				fw.write(Double.valueOf(ba).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
@@ -70,13 +71,14 @@ public class budgetMaker{
 			}
 			else
 			{
-				File f = new File("budget.txt"); //TODO make it change vs delete
+				File f = new File("budget.txt"); 
 				FileWriter fw = new FileWriter(f,true);
 				fw.write("-");
 				double money = b-ba;
 				fw.write("$");
 				fw.write(Double.valueOf(money).toString());
-				fw.write("Budget: ");
+				fw.write(System.getProperty( "line.separator" ));
+				fw.write("Budget: $");
 				fw.write(Double.valueOf(ba).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
@@ -93,13 +95,9 @@ public class budgetMaker{
 	double deposit, budget = 0.0;
 
 	In in = new In(file);
-	/*
-	while(in.hasNextLine()){
-	    String temp1 = in.readString();
-	    double temp2 = in.readDouble();
-	    } */
+	
 	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split(":");
+	String[] split = temp[temp.length-1].split("$");
 	budget = Double.parseDouble(split[1]);
 
 	System.out.print("Enter deposit amount: $");
@@ -115,16 +113,18 @@ public class budgetMaker{
 
 	In in = new In(file);
 	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split(":");
+	String[] split = temp[temp.length-1].split("$");
 	budget = Double.parseDouble(split[1]);
 
 	System.out.print("Enter deposit amount: $");
 	withdrawl = scnr.nextDouble();
-
-	budget = budget - withdrawl;
-	System.out.println("Your new budget is: $" + budget);
-	appendFile(budget, withdrawl, true);
-    }
+	
+	//while(withdrawl < budget)
+	//{
+		budget = budget - withdrawl;
+		System.out.println("Your new budget is: $" + budget);
+		appendFile(budget, withdrawl, true);
+   // }
     
     public static void main(String[] args)
 	{
