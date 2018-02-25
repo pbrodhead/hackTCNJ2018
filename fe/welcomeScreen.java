@@ -1,3 +1,4 @@
+package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -20,10 +21,12 @@ public class welcomeScreen extends JFrame implements ActionListener
 	{
 		if(e.getActionCommand().equals("myButton"))
 		{
-			newProf np = new newProf();
+			System.out.print("kms");
 			setVisible(false); //you can't see me!
 			dispose(); //Destroy the JFrame object
 		}	
+		
+		return;
 	}
 	
 	public ActionEvent create()

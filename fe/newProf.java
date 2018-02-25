@@ -1,4 +1,4 @@
-
+package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -52,6 +52,10 @@ public class newProf extends JFrame implements ActionListener
 	public newProf() 
 	{
 		super("New Profile");
+	}
+	
+	public ActionEvent create()
+	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 600));
 	    ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13) );
@@ -140,10 +144,12 @@ public class newProf extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
+		ActionEvent e = new ActionEvent(submitBtn,1,null); // moves on when submit button is clicked
 		
-		
+		return e;
 		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
 	}
+	
 	
 	public void actionPerformed(ActionEvent e)
 	{
@@ -194,7 +200,10 @@ public class newProf extends JFrame implements ActionListener
 		
 		if (e.getActionCommand().equals("submitBtn"))
 		{
-			
+			//open homepage while closing current window
+			homePage hP = new homePage(); 
+			setVisible(false); //you can't see me!
+			dispose(); //Destroy the JFrame object
 			
 		}
 
@@ -202,7 +211,7 @@ public class newProf extends JFrame implements ActionListener
 	
 	public double[] pull() // pulls in all the data
 	{
-		double[] interm = new double[];
+		double[] interm = new double[7];
 		interm[0] = salaryNum;
 		interm[1] =	auxIncNum;
 		interm[2] = carNum;
@@ -211,7 +220,7 @@ public class newProf extends JFrame implements ActionListener
 		interm[5] = insuranceNum;
 		interm[6] = extraNum;
 		
-		return interm[];
+		return interm;
 	}
 	
 	

@@ -1,3 +1,4 @@
+package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -161,11 +162,11 @@ public class homePage extends JFrame implements ActionListener
 		if (e.getActionCommand().equals("submitBtn"))
 		{
 			
-			
 		}
 		if (e.getActionCommand().equals("editBtn"))
 		{
-			
+			//should go to newProf
+			newProf nP = new newProf();
 			
 		}
 	}
