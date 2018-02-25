@@ -1,3 +1,4 @@
+package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -188,10 +189,10 @@ public class newProf extends JFrame implements ActionListener
 		}
 	}
 	
-	public static void main(String[] args)
+	/* public static void main(String[] args)
 	{
 		new newProf();
-	}
+	}*/
 	
 }
 	  

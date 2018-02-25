@@ -1,8 +1,8 @@
+package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
-import .*;
 
 public class welcomeScreen extends JFrame implements ActionListener
 {
@@ -13,6 +13,21 @@ public class welcomeScreen extends JFrame implements ActionListener
     public welcomeScreen() 
 	{
         super("Welcome Screen");
+    }
+	
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getActionCommand().equals("myButton"))
+		{
+			//newPRof np = new newProf();
+			//newprof.create()
+			System.out.println("OPEN");
+		}	
+	}
+	
+	public ActionEvent create()
+	{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400, 200));
 	    ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13) );
@@ -30,20 +45,22 @@ public class welcomeScreen extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
-    }
+		ActionEvent e = new ActionEvent(welcome,1,null);
 
-	public void actionPerformed(ActionEvent e)
-	{
-		if(e.getActionCommand().equals("myButton"))
-		{
-			new newProf();
-		}
-		
+		return e;		
 	}
 	
 	
     public static void main(String[] args) 
 	{
-		new welcomeScreen();
+		welcomeScreen ws = new welcomeScreen();
+		//newPRof np = new newProf();
+		ActionEvent e = ws.create();
+		//ActionEvent e = new ActionEvent(null);
+		
+		ws.actionPerformed(e);
+			
+		//new welcomeScreen();
+		return;
     }
 }
