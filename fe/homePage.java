@@ -119,6 +119,7 @@ public class homePage extends JFrame implements ActionListener
 			totalBudget = totalBudget - foodNum;
 			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			foodLbl.setText("Food: $" + Food.getText());
+
 		}
 		if (e.getActionCommand().equals("gasBtn"))
 		{

@@ -10,7 +10,10 @@ public class budgetMaker{
 
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
-public static void setup(){ // this method runs the first time the program is launched
+	public budgetMaker()//empty constructor
+	{}
+   
+   public static void setup(){ // this method runs the first time the program is launched
     double budget = 0.0;
 	// user inputs information
 	do{
