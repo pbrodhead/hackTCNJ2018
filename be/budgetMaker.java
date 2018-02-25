@@ -56,7 +56,7 @@ public class budgetMaker{
 				//fw.write(Double.valueOf(money).toString());
 				fw.write("Budget:");
 				fw.write(Double.valueOf(ba).toString());
-				fw.write("\n");
+				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
 				fw.close();
 			}
@@ -70,7 +70,7 @@ public class budgetMaker{
 				fw.write(Double.valueOf(money).toString());
 				fw.write("Budget: ");
 				fw.write(Double.valueOf(ba).toString());
-				fw.write("\n");
+				fw.write(System.getProperty( "line.separator" ));
 				fw.flush();
 				fw.close();
 			}
