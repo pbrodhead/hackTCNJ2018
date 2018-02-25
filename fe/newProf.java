@@ -176,18 +176,15 @@ public class newProf extends JFrame implements ActionListener
 			insuranceLbl.setText("Insurance: $" + Insurance.getText());
 			insuranceNum = Double.parseDouble(Insurance.getText());
 
-		
-
 		}
 		if (e.getActionCommand().equals("extraBtn"))
 		{
 			extraLbl.setText("Savings: " + Extra.getText() + "%");
 			extraNum = Double.parseDouble(Extra.getText());
 			extraNum = extraNum / 100;
-
 			extraNum = extraNum * (salaryNum + auxIncNum);
-
 		}
+		
 	}
 	
 	

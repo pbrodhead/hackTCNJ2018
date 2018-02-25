@@ -235,7 +235,7 @@ public static void withdrawl(File file){
 	}
 }
 
-public static void main(String[] args)
+/*public static void main(String[] args)
 {
 	boolean loop = true;
 	while(loop)
@@ -273,6 +273,6 @@ public static void main(String[] args)
 		}
 	
 	}
-	}
+	}*/
 }
 
