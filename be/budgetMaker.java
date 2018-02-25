@@ -21,17 +21,26 @@ public class budgetMaker{
 	    }
 	    else error = false;
 	} while(error);
-	
 	income = scnr.nextDouble();
-	System.out.print("Enter your fixed expenses: $");
-	if(!scnr.hasNextDouble()){
-	    System.out.println("Please enter a number");
-	}
+
+	do{
+	    System.out.print("Enter your fixed expenses: $");
+	    if(!scnr.hasNextDouble()){
+		System.out.println("Please enter a number");
+		String temp = scnr.next();
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
 	fixedExpenses = scnr.nextDouble();
 
 	//total free money determined
 	budget = income - fixedExpenses;
 	System.out.println("Your budget is $" + budget);
+	if(budget < 0.0){
+	    System.out.println("You have more expenses than income. Please get a higher paying job");
+	    setup();
+	}
 
 	createFile(budget); 
     }
@@ -104,7 +113,15 @@ public class budgetMaker{
 	String[] split = temp[temp.length-1].split("$");
 	budget = Double.parseDouble(split[1]);
 
-	System.out.print("Enter deposit amount: $");
+	do{
+	    System.out.print("Enter deposit amount: $");
+	    if(!scnr.hasNextDouble()){
+		System.out.println("Please enter a number");
+		String temp12 = scnr.next();
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
 	deposit = scnr.nextDouble();
 
 	budget = budget + deposit;
@@ -120,15 +137,25 @@ public class budgetMaker{
 	String[] split = temp[temp.length-1].split("$");
 	budget = Double.parseDouble(split[1]);
 
-	System.out.print("Enter deposit amount: $");
+	do{
+	    System.out.print("Enter deposit amount: $");
+	    if(!scnr.hasNextDouble()){
+		System.out.println("Please enter a number");
+		String temp123 = scnr.next();
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
 	withdrawl = scnr.nextDouble();
 	
-	//while(withdrawl < budget)
-	//{
-		budget = budget - withdrawl;
-		System.out.println("Your new budget is: $" + budget);
-		appendFile(budget, withdrawl, true);
-   // }
+	budget = budget - withdrawl;
+	if(budget < 0.0){
+	    System.out.println("You are trying to overdraw your account. Please rethink your spending habits");
+	    withdrawl(file);
+	}
+	System.out.println("Your new budget is: $" + budget);
+	appendFile(budget, withdrawl, true);
+
     }
     
     public static void main(String[] args)
@@ -162,7 +189,7 @@ public class budgetMaker{
 			}
 	
 			else{
-				System.out.println("That is not a valid option. Goodbye");
+				System.out.println("That is not a valid option. Please try again");
 			}
 	
 		}
