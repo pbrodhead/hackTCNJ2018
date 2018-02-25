@@ -20,6 +20,7 @@ public class homePage extends JFrame implements ActionListener
 	private JButton luxuryBtn;
 	private JButton depositBtn;
 	private JButton submitBtn;
+	private JButton editBtn;
 	
 	private JTextField Food;
 	private JTextField Gas;
@@ -77,7 +78,7 @@ public class homePage extends JFrame implements ActionListener
 		
 		budgetLbl = new JLabel("Funds Remaining: $" + totalBudget);
 		
-		JButton editBtn = new JButton("Edit Profile");
+		editBtn = new JButton("Edit Profile");
 		editBtn.setActionCommand("editBtn");
 		editBtn.addActionListener(this);
 		
@@ -109,6 +110,8 @@ public class homePage extends JFrame implements ActionListener
 		add(budgetLbl);
 		
 		add(submitBtn);
+		
+		add(editBtn);
 		
 		pack();
 		setLocationRelativeTo(null);
@@ -156,6 +159,11 @@ public class homePage extends JFrame implements ActionListener
 			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 		}
 		if (e.getActionCommand().equals("submitBtn"))
+		{
+			
+			
+		}
+		if (e.getActionCommand().equals("editBtn"))
 		{
 			
 			
