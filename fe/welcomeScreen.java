@@ -25,7 +25,6 @@ public class welcomeScreen extends JFrame implements ActionListener
 	    homePage hp = new homePage();
 		if(e.getActionCommand().equals("myButton"))
 		{
-			System.out.print("kms");
 			setVisible(false); //you can't see me!
 			dispose(); //Destroy the JFrame object
 			if(!new File("../budget.txt").isFile()){
@@ -37,6 +36,12 @@ public class welcomeScreen extends JFrame implements ActionListener
 		}	
 		
 		return;
+	}
+	
+	public void close()
+	{
+		setVisible(false); //you can't see me!
+		dispose(); //Destroy the JFrame object
 	}
 	
 	public ActionEvent create()

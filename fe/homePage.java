@@ -35,10 +35,10 @@ public class homePage extends JFrame implements ActionListener
 	public double luxuryNum = 0.00;
 	public double depositNum = 0.00;
 	
-	public double totalBudget = 0.00;
+	public double totalBudgetHere = 0.00;
 	
 	
-	public homePage() 
+	public homePage(double totalBudget) 
 	{
 		super("Homepage");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -119,6 +119,7 @@ public class homePage extends JFrame implements ActionListener
 		setVisible(true);
 		setResizable(false);
 		
+		totalBudgetHere = totalBudget;
 		
 		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
 	}
@@ -161,7 +162,9 @@ public class homePage extends JFrame implements ActionListener
 		}
 		if (e.getActionCommand().equals("submitBtn"))
 		{
-			
+			homePage hPNext = new homePage(this.pull());//update the current money allowed
+			setVisible(false); //you can't see me!
+			dispose(); //Destroy the JFrame object
 		}
 		if (e.getActionCommand().equals("editBtn"))
 		{
@@ -174,6 +177,11 @@ public class homePage extends JFrame implements ActionListener
 	public static void showPage()
 	{
 		new homePage();
+	}
+	
+	public double pull() //TODO finish
+	{
+		return totalBudget = totalBudget - depositNum - luxuryNum - funNum - gasNum - foodNum;
 	}
 }
 	  

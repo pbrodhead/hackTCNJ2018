@@ -1,4 +1,4 @@
-//package be;
+package be;
 import in.*;
 import java.util.*;
 import java.io.File;
@@ -238,7 +238,7 @@ public static void withdrawl(File file){
 }
 
 //IF WE WANT TO ABANDON UI --> uncomment this
-public static void main(String[] args)
+/*public static void main(String[] args)
 {
 	boolean loop = true;
 	while(loop)
@@ -276,6 +276,6 @@ public static void main(String[] args)
 		}
 	
 	}
-	}
+	}*/
 }
 

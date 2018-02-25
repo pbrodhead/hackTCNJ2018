@@ -1,3 +1,4 @@
+
 import fe.*;
 import be.*;
 import java.awt.*;
@@ -42,15 +43,23 @@ public class main
 			fixedCost = data[2] + data[3] + data[4] + data[5]+ data[6]; // location of all other data sources
 			 
 			double leftover = income - fixedCost; //calculation of budget allotment
-			bM.createFile(leftover); //create the .txt
-			//go to homepage now
+			bM.createFile(leftover); //create the .txt (in current directory)
+			//go to homepage now]
+			homePage hP = new homePage(leftover); //go straight to the home screen
 			//nP.actionPerformed(e2); //close the new prof page and launch the home page
 		}
 		
 		else
 		{ 
-				homePage hP = new homePage(); //go straight to the home screen
+				wS.close();//close the welcome screen
+				In in = new In("./budget.txt");
+				String[] temp = in.readAllStrings();
+				String[] split = temp[temp.length-1].split(":");
+				double budget = Double.parseDouble(split[1]);
+				homePage hP = new homePage(budget); //go straight to the home screen
 		}
+		
+		return;
 	
 	}
 
