@@ -1,4 +1,4 @@
-
+	
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -12,21 +12,26 @@ public class homePage extends JFrame implements ActionListener
 	private JLabel gasLbl;
 	private JLabel funLbl;
 	private JLabel luxuryLbl;
+	private JLabel depositLbl;
+	private JLabel budgetLbl;
 	
 	private JButton foodBtn;
 	private JButton gasBtn;
 	private JButton funBtn;
 	private JButton luxuryBtn;
+	private JButton depositBtn;
 	
 	private JTextField Food;
 	private JTextField Gas;
 	private JTextField Fun;
 	private JTextField Luxury;
+	private JTextField Deposit;
 	
 	public double foodNum = 0.00;
 	public double gasNum = 0.00;
 	public double funNum = 0.00;
 	public double luxuryNum = 0.00;
+	public double depositNum = 0.00;
 	
 	public double totalBudget = 0.00;
 	
@@ -64,13 +69,13 @@ public class homePage extends JFrame implements ActionListener
 		luxuryBtn.addActionListener(this);
 		Luxury = new JTextField("", 5);
 		
-		JLabel depositLbl = new JLabel("Deposit");
-		JButton depositBtn = new JButton("Ok");
+		depositLbl = new JLabel("Deposit");
+		depositBtn = new JButton("Ok");
 		depositBtn.setActionCommand("depositBtn");
 		depositBtn.addActionListener(this);
-		JTextField Deposit = new JTextField("", 5); 
+		Deposit = new JTextField("", 5); 
 		
-		JLabel budgetLbl = new JLabel("Funds Remaining: $" + totalBudget);
+		budgetLbl = new JLabel("Funds Remaining: $" + totalBudget);
 		
 		JButton editBtn = new JButton("Edit Profile");
 		editBtn.setActionCommand("editBtn");
@@ -113,30 +118,35 @@ public class homePage extends JFrame implements ActionListener
 		{
 			foodNum = Double.parseDouble(Food.getText());
 			totalBudget = totalBudget - foodNum;
-			budgetLbl.setText("Funds Remaining: " + budgetTotal);
+			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			foodLbl.setText("Food: $" + Food.getText());
 		}
 		if (e.getActionCommand().equals("gasBtn"))
 		{
 			gasNum = Double.parseDouble(Gas.getText());
 			totalBudget = totalBudget - gasNum;
-			budgetLbl.setText("Funds Remaining: " + budgetTotal);
+			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			gasLbl.setText("Gas: $" + Gas.getText());
 		}
 		if (e.getActionCommand().equals("funBtn"))
 		{
 			funNum = Double.parseDouble(Fun.getText());
 			totalBudget = totalBudget - funNum;
-			budgetLbl.setText("Funds Remaining: " + budgetTotal);
+			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			funLbl.setText("Fun: $" + Fun.getText());
-			
 		}
 		if (e.getActionCommand().equals("luxuryBtn"))
 		{
 			luxuryNum = Double.parseDouble(Luxury.getText());
 			totalBudget = totalBudget - luxuryNum;
-			budgetLbl.setText("Funds Remaining: " + budgetTotal);
-			luxuryLbl.setText("Home: $" + Luxury.getText());
+			budgetLbl.setText("Funds Remaining: $" + totalBudget);
+			luxuryLbl.setText("Home: $" + Luxury.getText());	
+		}
+		if (e.getActionCommand().equals("depositBtn"))
+		{
+			depositNum = Double.parseDouble(Deposit.getText());
+			totalBudget = totalBudget + depositNum;
+			budgetLbl.setText("Funds Remaining: $" + totalBudget);
 			
 		}
 	}
