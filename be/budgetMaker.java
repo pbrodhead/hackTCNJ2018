@@ -13,8 +13,16 @@ public class budgetMaker{
 	
 	// user inputs information
 	System.out.print("Enter your income: $");
+	if(!scnr.hasNextDouble()){
+	    System.out.println("Please enter a number");
+	    //setup();
+	}
 	income = scnr.nextDouble();
 	System.out.print("Enter your fixed expenses: $");
+	if(!scnr.hasNextDouble()){
+	    System.out.println("Please enter a number");
+	    //setup();
+	}
 	fixedExpenses = scnr.nextDouble();
 
 	//total free money determined
