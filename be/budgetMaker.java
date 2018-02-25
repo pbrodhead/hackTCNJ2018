@@ -111,7 +111,7 @@ public static void deposit(File file){
 	
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split("$");
-	budget = Double.parseDouble(split[1]);
+	budget = Double.parseDouble(split[0]);
 
 	do{
 	    System.out.print("Enter deposit amount: $");
@@ -135,7 +135,7 @@ public static void withdrawl(File file){
 	In in = new In(file);
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split("$");
-	budget = Double.parseDouble(split[1]);
+	budget = Double.parseDouble(split[0]);
 
 	do{
 	    System.out.print("Enter withdrawal amount: $");
