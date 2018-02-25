@@ -131,7 +131,7 @@ public class budgetMaker{
 		{
 			String editType;
 			File budgetFile = new File("./budget.txt");
-			System.out.print("Is this a deposit or a withdrawl? d/w: ");
+			System.out.print("Is this a deposit, withdrawl, or exit? d/w/e: ");
 			editType = scnr.next();
 		
 			if(editType.equals("d")) 
