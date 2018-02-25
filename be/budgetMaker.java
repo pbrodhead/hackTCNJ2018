@@ -9,11 +9,11 @@ public class budgetMaker{
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
 public static void setup(){ // this method runs the first time the program is launched
-	double income, fixedExpenses, budget = 0.0;
+    double salary, auxIncome, income, rent, mortgage, car, insurance, taxes, savings, fixedExpenses, budget = 0.0;
 	
 	// user inputs information
 	do{
-	    System.out.print("Enter your income: $");
+	    System.out.print("Enter your annual salary: $");
 	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
 		System.out.println("Please enter a number");
 		String temp = scnr.next(); //dumps garbage data to avoid infinite loops
@@ -21,10 +21,23 @@ public static void setup(){ // this method runs the first time the program is la
 	    }
 	    else error = false;
 	} while(error);
-	income = scnr.nextDouble();
+	salary = scnr.nextDouble();
 
 	do{
-	    System.out.print("Enter your fixed expenses: $");
+	    System.out.print("Enter any monthly auxiliary income: $");
+	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //dumps garbage data to avoid infinite loops
+		error = true;
+	    }
+	    else error = false;
+	} while(error);
+	auxIncome = scnr.nextDouble();
+
+	income = (salary / 12) + auxIncome;
+
+	do{
+	    System.out.print("Enter your monthly rent: $");
 	    if(!scnr.hasNextDouble()){ //see above do/while loop
 		System.out.println("Please enter a number");
 		String temp = scnr.next(); //see above do/while loop
@@ -32,7 +45,66 @@ public static void setup(){ // this method runs the first time the program is la
 	    }
 	    else error = false;
 	}while(error);
-	fixedExpenses = scnr.nextDouble();
+	rent = scnr.nextDouble();
+
+	do{
+	    System.out.print("Enter your monthly mortgage payment: $");
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //see above do/while loop
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
+	mortgage = scnr.nextDouble();
+
+	do{
+	    System.out.print("Enter your monthly car payment: $");
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //see above do/while loop
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
+	car = scnr.nextDouble();
+
+	do{
+	    System.out.print("Enter your monthly insurance payment: $");
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //see above do/while loop
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
+	insurance = scnr.nextDouble();
+
+	do{
+	    System.out.print("Enter your monthly property taxes: $");
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //see above do/while loop
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
+	taxes = scnr.nextDouble();
+
+	do{
+	    System.out.print("Enter your desired monthly savings rate: ");
+	    if(!scnr.hasNextDouble()){ //see above do/while loop
+		System.out.println("Please enter a number");
+		String temp = scnr.next(); //see above do/while loop
+		error = true;
+	    }
+	    else error = false;
+	}while(error);
+	savings = scnr.nextDouble();
+	savings = savings / 100;
+	savings = savings * income;
+
+	fixedExpenses = rent + mortgage + car + insurance + taxes + savings;
 
 	//total free money determined
 	budget = income - fixedExpenses;
@@ -53,7 +125,7 @@ public static void createFile(double budget){
 			File file = new File("budget.txt");
 			FileWriter fileWriter = new FileWriter(file);
 			//fileWriter.write("+" + budgetStr);
-			fileWriter.write("Budget: $");
+			fileWriter.write("Budget:");
 			fileWriter.write(budgetStr);
 			fileWriter.write(System.getProperty( "line.separator" ));
 			fileWriter.flush();
