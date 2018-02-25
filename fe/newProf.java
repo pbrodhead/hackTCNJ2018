@@ -27,6 +27,7 @@ public class newProf extends JFrame implements ActionListener
 	private JButton foodBtn;
 	private JButton funBtn;
 	private JButton extraBtn;
+	private JButton submitBtn;
 	
 	private JTextField Salary;
 	private JTextField auxInc;
@@ -99,6 +100,11 @@ public class newProf extends JFrame implements ActionListener
 		extraBtn.addActionListener(this);
 		Extra = new JTextField("", 5);
 		
+		submitBtn = new JButton("Submit");
+		submitBtn.setActionCommand("submitBtn");
+		submitBtn.addActionListener(this);
+		
+		
 		add(salaryLbl);
 		add(Salary);
 		add(salaryBtn);
@@ -127,6 +133,7 @@ public class newProf extends JFrame implements ActionListener
 		add(Extra);
 		add(extraBtn);
 		
+		add(submitBtn);
 		
 		
 		pack();
@@ -184,7 +191,15 @@ public class newProf extends JFrame implements ActionListener
 			extraNum = extraNum / 100;
 			extraNum = extraNum * (salaryNum + auxIncNum);
 		}
+<<<<<<< HEAD
 		
+=======
+		if (e.getActionCommand().equals("submitBtn"))
+		{
+			
+			
+		}
+>>>>>>> 590a05db9377dfba6615926d11bbaa5e3fc6b9c6
 	}
 	
 	
