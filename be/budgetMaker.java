@@ -1,5 +1,5 @@
-//package be;
-import in.*;
+package be;
+import be.in.*;
 import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -183,7 +183,7 @@ public static void createFile(double budget){
 public static void deposit(File file){
 	double deposit, budget = 0.0;
 
-	In in = new In(file);
+	be.in.In in = new be.in.In(file);
 	
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split(":");
@@ -208,7 +208,7 @@ public static void deposit(File file){
 public static void withdrawl(File file){
 	double withdrawl, budget = 0.0;
 
-	In in = new In(file);
+	be.in.In in = new be.in.In(file);
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split(":");
 	budget = Double.parseDouble(split[1]);
