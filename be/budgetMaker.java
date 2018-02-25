@@ -220,15 +220,9 @@ public static void withdrawl(File file){
 	
 	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
-<<<<<<< HEAD
 		double budgetA = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budgetA);
 		appendFile(budgetA, budget, true);
-=======
-		budget = budget - withdrawl;
-		System.out.println("Your new budget is: $" + budget);
-		appendFile(budget, withdrawl, false);
->>>>>>> b60a3f44d0762ea97e2fe9d04e5c51b537bd73ca
 	}
 	else
 	{
@@ -237,12 +231,16 @@ public static void withdrawl(File file){
 	}
 }
 
-public static void main(String[] args)
-{
+    public static boolean isFile(String fileName){
+	return new File(fileName).isFile();
+    }
+
+    public static void main(String[] args)
+    {
 	boolean loop = true;
 	while(loop)
 	{
-		if(!(new File("./budget.txt").isFile())) 
+	    if(!isFile("./budget.txt")) 
 		{	
 			setup();
 		}
