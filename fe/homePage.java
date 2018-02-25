@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -114,7 +113,7 @@ public class homePage extends JFrame implements ActionListener
 			foodNum = Double.parseDouble(Food.getText());
 			totalBudget = totalBudget - foodNum;
 			budgetLbl.setText("Funds Remaining: " + budgetTotal);
-			foodLbl.setText("Food: $" + Food.getText());
+			foodLbl.setTexat("Food: $" + Food.getText());
 		}
 		if (e.getActionCommand().equals("gasBtn"))
 		{

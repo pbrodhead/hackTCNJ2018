@@ -23,7 +23,6 @@ public class welcomeScreen extends JFrame implements ActionListener
 			newProf np = new newProf();
 			setVisible(false); //you can't see me!
 			dispose(); //Destroy the JFrame object
-			System.out.println("OPEN");
 		}	
 	}
 	
