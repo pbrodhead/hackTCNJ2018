@@ -5,23 +5,27 @@ import java.io.IOException;
 
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
-	
+    public static boolean error = false;
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
    public static void setup(){ // this method runs the first time the program is launched
 	double income, fixedExpenses, budget = 0.0;
 	
 	// user inputs information
-	System.out.print("Enter your income: $");
-	if(!scnr.hasNextDouble()){
-	    System.out.println("Please enter a number");
-	    //setup();
-	}
+	do{
+	    System.out.print("Enter your income: $");
+	    if(!scnr.hasNextDouble()){
+		System.out.println("Please enter a number");
+		String temp = scnr.next();
+		error = true;
+	    }
+	    else error = false;
+	} while(error);
+	
 	income = scnr.nextDouble();
 	System.out.print("Enter your fixed expenses: $");
 	if(!scnr.hasNextDouble()){
 	    System.out.println("Please enter a number");
-	    //setup();
 	}
 	fixedExpenses = scnr.nextDouble();
 
@@ -125,6 +129,7 @@ public class budgetMaker{
 		System.out.println("Your new budget is: $" + budget);
 		appendFile(budget, withdrawl, true);
    // }
+    }
     
     public static void main(String[] args)
 	{
