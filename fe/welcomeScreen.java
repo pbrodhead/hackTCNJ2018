@@ -1,4 +1,3 @@
-package fe;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -16,12 +15,14 @@ public class welcomeScreen extends JFrame implements ActionListener
     }
 	
 	
+	// When the button is pressed open the next frame
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getActionCommand().equals("myButton"))
 		{
-			//newPRof np = new newProf();
-			//newprof.create()
+			newProf np = new newProf();
+			setVisible(false); //you can't see me!
+			dispose(); //Destroy the JFrame object
 			System.out.println("OPEN");
 		}	
 	}
@@ -54,13 +55,16 @@ public class welcomeScreen extends JFrame implements ActionListener
     public static void main(String[] args) 
 	{
 		welcomeScreen ws = new welcomeScreen();
+		ActionEvent e;
 		//newPRof np = new newProf();
-		ActionEvent e = ws.create();
+		e = ws.create();
 		//ActionEvent e = new ActionEvent(null);
 		
 		ws.actionPerformed(e);
 			
 		//new welcomeScreen();
 		return;
+		
+		//System.out.print("Hello World");
     }
 }
