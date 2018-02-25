@@ -104,7 +104,7 @@ public class budgetMaker{
 		
 	}
 
-    public static void deposit(File file){
+public static void deposit(File file){
 	double deposit, budget = 0.0;
 
 	In in = new In(file);
@@ -113,10 +113,6 @@ public class budgetMaker{
 	String[] split = temp[temp.length-1].split("$");
 	budget = Double.parseDouble(split[1]);
 
-<<<<<<< HEAD
-	System.out.print("Enter deposit amount: $");
-	deposit = scnr.nextDouble(); // TODO check that input is valid
-=======
 	do{
 	    System.out.print("Enter deposit amount: $");
 	    if(!scnr.hasNextDouble()){
@@ -126,15 +122,13 @@ public class budgetMaker{
 	    }
 	    else error = false;
 	}while(error);
-	deposit = scnr.nextDouble();
->>>>>>> 3de8dae32489377328cdd97d36318f4058f2b847
 
 	budget = budget + deposit;
 	System.out.println("Your new budget is: $" + budget);
 	appendFile(budget, deposit, true);
     }
 
-    public static void withdrawl(File file){
+public static void withdrawl(File file){
 	double withdrawl, budget = 0.0;
 
 	In in = new In(file);
@@ -143,7 +137,7 @@ public class budgetMaker{
 	budget = Double.parseDouble(split[1]);
 
 	do{
-	    System.out.print("Enter deposit amount: $");
+	    System.out.print("Enter withdrawal amount: $");
 	    if(!scnr.hasNextDouble()){
 		System.out.println("Please enter a number");
 		String temp123 = scnr.next();
@@ -153,32 +147,21 @@ public class budgetMaker{
 	}while(error);
 	withdrawl = scnr.nextDouble();
 	
-<<<<<<< HEAD
 	if(withdrawl < budget) //TODO check that input is valid
 	{
 		budget = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budget);
 		appendFile(budget, withdrawl, true);
 	}
-	
 	else
 	{
 		System.out.println("Insufficient Funds");
 	}
-=======
-	budget = budget - withdrawl;
-	if(budget < 0.0){
-	    System.out.println("You are trying to overdraw your account. Please rethink your spending habits");
-	    withdrawl(file);
-	}
-	System.out.println("Your new budget is: $" + budget);
-	appendFile(budget, withdrawl, true);
 
->>>>>>> 3de8dae32489377328cdd97d36318f4058f2b847
-    }
-    
-    public static void main(String[] args)
-	{
+	budget = budget - withdrawl;
+
+public static void main(String[] args)
+{
 	boolean loop = true;
 	while(loop)
 	{
@@ -190,7 +173,7 @@ public class budgetMaker{
 		{
 			String editType;
 			File budgetFile = new File("./budget.txt");
-			System.out.print("Is this a deposit, withdrawl, or exit? d/w/e: ");
+			System.out.print("Is this a deposit, withdrawal, or exit? d/w/e: ");
 			editType = scnr.next();
 		
 			if(editType.equals("d")) 
@@ -208,11 +191,8 @@ public class budgetMaker{
 			}
 	
 			else{
-<<<<<<< HEAD
 				System.out.println("That is not a valid option.");
-=======
-				System.out.println("That is not a valid option. Please try again");
->>>>>>> 3de8dae32489377328cdd97d36318f4058f2b847
+
 			}
 	
 		}
