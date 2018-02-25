@@ -6,11 +6,12 @@ import java.io.IOException;
 public class budgetMaker{
     public static Scanner scnr = new Scanner(System.in);
     public static boolean error = false; //global error value for catch statments
+    public static double salary, auxIncome, income, rent, mortgage, car, insurance, taxes, savings, fixedExpenses = 0.0;
+
 	//Methods: setup(), createFile(), deposit(), withdrawl(), main()
    
 public static void setup(){ // this method runs the first time the program is launched
-    double salary, auxIncome, income, rent, mortgage, car, insurance, taxes, savings, fixedExpenses, budget = 0.0;
-	
+    double budget = 0.0;
 	// user inputs information
 	do{
 	    System.out.print("Enter your annual salary: $");
