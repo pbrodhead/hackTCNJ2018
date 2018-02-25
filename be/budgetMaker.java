@@ -174,15 +174,18 @@ public static void createFile(double budget){
 		
 	}
 
-public static void deposit(File file){
-	double deposit, budget = 0.0;
-
+    public static double readBudget(File file){
 	In in = new In(file);
-	
 	String[] temp = in.readAllStrings();
 	String[] split = temp[temp.length-1].split(":");
-	budget = Double.parseDouble(split[1]);
+	return Double.parseDouble(split[1]);
+    }
 
+    public static void deposit(File file){
+	double deposit, budget = 0.0;
+	
+	budget = readBudget(file);
+	
 	do{
 	    System.out.print("Enter deposit amount: $");
 	    if(!scnr.hasNextDouble()){ //checks to see if number was entered
@@ -202,11 +205,8 @@ public static void deposit(File file){
 public static void withdrawl(File file){
 	double withdrawl, budget = 0.0;
 
-	In in = new In(file);
-	String[] temp = in.readAllStrings();
-	String[] split = temp[temp.length-1].split(":");
-	budget = Double.parseDouble(split[1]);
-
+	budget = readBudget(file);
+	
 	do{
 	    System.out.print("Enter withdrawal amount: $");
 	    if(!scnr.hasNextDouble()){ //see above do/while loop
@@ -220,9 +220,15 @@ public static void withdrawl(File file){
 	
 	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
+<<<<<<< HEAD
 		double budgetA = budget - withdrawl;
 		System.out.println("Your new budget is: $" + budgetA);
 		appendFile(budgetA, budget, true);
+=======
+		budget = budget - withdrawl;
+		System.out.println("Your new budget is: $" + budget);
+		appendFile(budget, withdrawl, false);
+>>>>>>> b60a3f44d0762ea97e2fe9d04e5c51b537bd73ca
 	}
 	else
 	{
