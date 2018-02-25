@@ -159,7 +159,6 @@ public static void createFile(double budget){
 				FileWriter fw = new FileWriter(f,true);
 				fw.write("-");
 				double money = b-ba;
-				fw.write("$");
 				fw.write(Double.valueOf(money).toString());
 				fw.write(System.getProperty( "line.separator" ));
 				fw.write("Budget:");
@@ -222,7 +221,7 @@ public static void withdrawl(File file){
 	if(withdrawl < budget) //checks to see if user not overdrawing
 	{
 		double budgetA = budget - withdrawl;
-		System.out.println("Your new budget is: $" + budget);
+		System.out.println("Your new budget is: $" + budgetA);
 		appendFile(budgetA, budget, true);
 	}
 	else
